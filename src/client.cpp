@@ -33,7 +33,11 @@ int main(int argc, char *argv[]) {
     }
 
     std::string cmd = std::string(command) + "\n";
-    write(sock_fd, cmd.c_str(), cmd.size());
+    if (write(sock_fd, cmd.c_str(), cmd.size()) < 0) {
+        perror("write command");
+        close(sock_fd);
+        return 4;
+    }
 
     char buffer[256];
     memset(buffer, 0, sizeof(buffer));

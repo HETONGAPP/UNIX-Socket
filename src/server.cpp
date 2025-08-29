@@ -56,9 +56,13 @@ int main(int argc, char *argv[]) {
             std::string cmd(buffer);
             if (cmd == "VERSION\n" || cmd == "VERSION") {
                 std::string version = VERSION_HASH;
-                write(client_fd, version.c_str(), version.size());
+                if (write(client_fd, version.c_str(), version.size()) < 0) {
+                    perror("write version");
+                }
             } else {
-                write(client_fd, "REJECTED", 8);
+                if (write(client_fd, "REJECTED", 8) < 0) {
+                    perror("write rejected");
+                }
             }
         }
         close(client_fd);
