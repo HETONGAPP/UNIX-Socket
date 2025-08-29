@@ -1,26 +1,36 @@
-# 编译器
+# compiler
 CXX = g++
 CXXFLAGS = -Wall -O2
 
-# 目标文件
-SERVER = server
-CLIENT = client
+# output directory
+OUTPUT = output
 
-# 源文件
-SERVER_SRC = server.cpp
-CLIENT_SRC = client.cpp
+# target files
+SERVER = $(OUTPUT)/server
+CLIENT = $(OUTPUT)/client
 
-# 自动获取 git commit hash
+# source files
+SERVER_SRC = src/server.cpp
+CLIENT_SRC = src/client.cpp
+
+# automatically get git commit hash
 GIT_HASH := $(shell git rev-parse HEAD)
 
-# 默认目标
+# default target
 all: $(SERVER) $(CLIENT)
 
-$(SERVER): $(SERVER_SRC)
+# ensure output directory exists
+$(OUTPUT):
+	mkdir -p $(OUTPUT)
+
+# rule: server
+$(SERVER): $(SERVER_SRC) | $(OUTPUT)
 	$(CXX) $(CXXFLAGS) -DVERSION_HASH="\"$(GIT_HASH)\"" -o $@ $<
 
-$(CLIENT): $(CLIENT_SRC)
+# rule: client
+$(CLIENT): $(CLIENT_SRC) | $(OUTPUT)
 	$(CXX) $(CXXFLAGS) -o $@ $<
 
+# clean
 clean:
-	rm -f $(SERVER) $(CLIENT)
+	rm -rf $(OUTPUT)
