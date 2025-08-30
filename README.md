@@ -9,6 +9,7 @@ A simple UNIX domain socket communication program example, implementing a client
 - Support for VERSION command, returns Git commit hash
 - Error handling with status codes
 - Cross-platform compatibility (Linux/Unix systems)
+- Cross-compilation support for ARM64 architecture
 
 ## Requirements
 
@@ -201,4 +202,41 @@ Any other command
 **Response:**
 ```
 REJECTED
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+**MIT License Summary:**
+
+- ✅ **Commercial use**: Licensed works can be used for commercial purposes
+- ✅ **Modification**: Licensed works can be modified
+- ✅ **Distribution**: Licensed works can be distributed
+- ✅ **Private use**: Licensed works can be used for private purposes
+- ⚠️ **Liability**: No liability for damages
+- ⚠️ **Warranty**: No warranty provided
+
+### Copyright Notice
+
+```
+Copyright (c) 2025 UNIX Socket Communication Example
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
