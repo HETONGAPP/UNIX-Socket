@@ -1,13 +1,13 @@
 # compiler
-CXX = g++
+CXX ?= g++
 CXXFLAGS = -Wall -O2
 
-# output directory
-OUTPUT = output
+# output directory (default: x86_64)
+OUTPUT_DIR ?= output/x86_64
 
 # target files
-SERVER = $(OUTPUT)/server
-CLIENT = $(OUTPUT)/client
+SERVER = $(OUTPUT_DIR)/server
+CLIENT = $(OUTPUT_DIR)/client
 
 # source files
 SERVER_SRC = src/server.cpp
@@ -20,17 +20,17 @@ GIT_HASH := $(shell git rev-parse HEAD)
 all: $(SERVER) $(CLIENT)
 
 # ensure output directory exists
-$(OUTPUT):
-	mkdir -p $(OUTPUT)
+$(OUTPUT_DIR):
+	mkdir -p $(OUTPUT_DIR)
 
 # rule: server
-$(SERVER): $(SERVER_SRC) | $(OUTPUT)
+$(SERVER): $(SERVER_SRC) | $(OUTPUT_DIR)
 	$(CXX) $(CXXFLAGS) -DVERSION_HASH="\"$(GIT_HASH)\"" -o $@ $<
 
 # rule: client
-$(CLIENT): $(CLIENT_SRC) | $(OUTPUT)
+$(CLIENT): $(CLIENT_SRC) | $(OUTPUT_DIR)
 	$(CXX) $(CXXFLAGS) -o $@ $<
 
-# clean
+# clean all output
 clean:
-	rm -rf $(OUTPUT)
+	rm -rf output
